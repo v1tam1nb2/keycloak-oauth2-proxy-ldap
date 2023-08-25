@@ -1,0 +1,26 @@
+version: '3'
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: keycloak
+    tty: true
+    ports:
+      - "18080:8080"
+      - "8443:8443"
+    volumes:
+      - ./data:/opt/keycloak/data
+      - ./certs:/etc/x509/https
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: passwd
+      KC_HOSTNAME_STRICT_HTTPS: 'false'
+      KC_HTTPS_CERTIFICATE_FILE: /etc/x509/https/server.crt
+      KC_HTTPS_CERTIFICATE_KEY_FILE: /etc/x509/https/server.key
+    command:
+      - start-dev
+    networks:
+    - oauth_network
+
+networks:
+  oauth_network:
+    external: true

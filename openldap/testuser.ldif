@@ -1,0 +1,15 @@
+dn: uid=test001,dc=my-company,dc=com
+uid: test001
+cn: test001
+objectClass: top
+objectClass: account
+objectClass: posixAccount
+objectClass: shadowAccount
+shadowLastChange: 0
+shadowMin: 0
+shadowMax: 99999
+loginShell: /bin/bash
+uidNumber: 1001
+gidNumber: 1001
+homeDirectory: /home/test001
+userPassword::dGVzdDAwMQ==
